@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>竹野翔一 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>竹野翔一 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ウェルスナビ株式会社</a>
+  <a href="#k2">2. ハコベル株式会社</a>
+  <a href="#k3">3. フリー株式会社（freee）</a>
+  <a href="#k4">4. アビームコンサルティング株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業開発マネージャー（アライアンス）</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">ウェルスナビ株式会社</div>
+  <div class="co-url"><a href="https://corp.wealthnavi.com/" target="_blank">https://corp.wealthnavi.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都品川区西五反田8-4-13 五反田JPビルディング 9F</td></tr><tr><th>上場区分</th><td>未上場</td></tr><tr><th>上場予定</th><td>当面予定なし</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★役員リレーション</li><li>★過去複数名入社実績アリ</li><li>石原さとみさん出演のTVCMでもお馴染みの同社。同社はお金の悩みをテクノロジーの力で解決し、日本の働く世代の豊かな人生をサポートすることを目指しています。</li><li>創業者であるCEO柴山様は、家族の金融格差を目の当たりにし、日本では富裕層向けサービスが主流の資産運用業界に切り込み、働く世代に豊かさを享受してもらうべく、事業を拡大されてきました。</li><li>執行役員・須藤様は、morich経由でジョインいただきました！経営に近い立場を志向されており、入社後ご活躍されて、現在は事業戦略グループ責任者とアライアンスグループ責任者を兼務されています。</li><li>2025年3月より三菱UFJ銀行にグループインし、同行の顧客資産を活用しながら更なる拡大を目指されています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「働く世代に豊かさを」というミッションのもと、日本の働く世代の豊かな老後に向けた資産形成をサポートする会社です。ロボアドバイザー『WealthNavi』は2025年4月1日には運用者数42万人、預かり資産は1兆円4,000億円を突破。2025年3月に三菱UFJ銀行の完全子会社となりました。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「働く世代に豊かさを」というミッションのもと、日本の働く世代の豊かな老後に向けた資産形成をサポートする会社です。ミッション実現に向けた第一歩として、ロボアドバイザー『WealthNavi』を開発・提供しています。</p><p>『WealthNavi』は2016年7月のサービス提供開始以降、2025年4月1日には運用者数42万人、預かり資産は1兆円4,000億円を突破。運用者数・預かり資産ともに国内ロボアドバイザーNo.1となっています。</p><p>2025年3月に三菱UFJ銀行の完全子会社となりました。三菱UFJ銀行／MUFGグループとの一体的なプロダクト開発を進めており、同行が抱える1,000万人規模のデジタル顧客基盤に対して、ロボアドバイザーに限らず、生命保険、個人年金、住宅ローンなどを含む個人向け金融プラットフォームの構築を目指し、新たなサービスの開発にも取り組んでいます。</p><p><strong>▼代表プロフィール</strong></p><ul><li><strong>CEO　柴山和久氏</strong>：1977年生まれ。2000年に東大法学部を卒業後、財務省に9年間勤務。ハーバード大学にて金融取引法を学んだ後、日英の財務省で予算、税制、国際交渉に参画。INSEADで金融工学を学んだ後、2010年にマッキンゼーに入社。ウォール街の機関投資家にて10兆円規模のリスク管理・資産運用プロジェクトに携わる。2015年3月に退社し、TECH::CAMP第6期に入学。卒業直後、次世代の金融インフラを構築したいという想いから、2015年4月にWealthNavi（ウェルスナビ）株式会社を設立。</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業開発マネージャー（アライアンス）</div>
+          <div class="job-preview">金融機関・事業会社とのアライアンスを通じた事業開発の企画・プロジェクト推進をリードするポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集背景】</strong></p><p>創業以来全自動で「長期・積立・分散」の資産運用を提供するロボアドバイザー『ウェルスナビ』の開発・運営を通じて成長し、預かり資産2兆円を超える業界No.1のサービスとして市場を牽引しています。</p><p>2024年の新NISA制度開始に伴い、『ウェルスナビ』は新たな成長局面を迎えています。当社はその追い風を受け、生命保険や年金などを対象とした新規プロダクトを複数リリースし、プロダクト横断の総合アドバイザリープラットフォーム「Money Advisory Platform（MAP）」の立ち上げを進めるなど、事業の大きな転換期を迎えています。</p><p>当社成長の原動力の一つが、金融機関や事業会社との幅広いアライアンスです。これまでに磨き上げたプロダクト企画・開発力と提携パートナーがもつ資産や顧客基盤を掛け合わせ、BtoBtoCモデルで協業サービスを展開してきました。20社を超える提携パートナーとの協業サービスの拡充や改善に留まらず、新たなパートナー企業の開拓や新規事業モデルの開発にも積極的に挑戦しています。</p><p><strong>【アライアンス事例】</strong></p><ul><li>ウェルスナビの運用体験を実現する投資信託「ウェルスナビ×R」（楽天証券様、楽天投信投資顧問様）</li><li>投資一任サービスで日本初のクレジットカード積立機能の提供（イオン銀行様、イオンフィナンシャルサービス様）</li></ul><p><strong>【期待する役割】</strong></p><p>アライアンスを通じた事業開発の企画・プロジェクト推進までの全体をリードしていただきます。ウェルスナビおよび提携パートナーの事業戦略を踏まえ、提携ストラクチャーや経済条件の交渉、事業スキーム構築に関わる論点整理を主導し、協業サービスのローンチから継続的改善、各種マーケティング施策を含むグロースに必要な企画・機能開発のプロジェクトマネジメントなど、事業成長のキードライバーとなる役割を担っていただきます。</p><p>事業開発にはプロダクト開発も伴うため、テックリードをはじめとする自社エンジニアチームと連携した開発計画とのアラインメントも推進いただきます。システム開発は内製化により対応しているため、スピード感を持ってプロダクト開発をいただける環境です。</p><p><strong>【業務内容】</strong></p><ul><li>提携による新サービス検討やスキーム改善の企画立案・実行</li><li>マーケティングKPIの設計、モニタリング、改善活動のリード</li><li>提携先および社内ステークホルダーとの調整・合意形成</li><li>プロダクト改善の提案、開発チームとの協業推進</li><li>各種案件進行のプロジェクトマネジメント</li><li>アライアンス事業開発チームマネジメント</li></ul><p><strong>【応募資格】</strong></p><p><strong>必須要件</strong></p><ul><li><span class='tag tag-must'>MUST</span> 金融機関や事業会社との事業提携・協業、もしくは新規事業開発の実務経験</li><li><span class='tag tag-must'>MUST</span> プロジェクトマネジメントや企画推進の経験（複数ステークホルダーと連携して成果を出した実績）</li><li><span class='tag tag-must'>MUST</span> ビジネスストラクチャーの設計・条件交渉に関する高いコミュニケーション能力</li><li><span class='tag tag-must'>MUST</span> 複数分野（企画、開発、マーケティング、営業など）と関わりながら、戦略的に物事を推進できる方</li><li><span class='tag tag-must'>MUST</span> 変化の激しい環境でも前向きにチャレンジできる姿勢</li></ul><p><strong>歓迎要件</strong></p><ul><li><span class='tag tag-want'>WANT</span> 事業会社における事業開発・事業推進によりKPIを継続的に改善させる経験</li><li><span class='tag tag-want'>WANT</span> 施策立案、効果検証時における定量/定性両面での分析業務の経験</li><li><span class='tag tag-want'>WANT</span> 金融事業に関連する経験</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業：条件によって可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.wealthnavi.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://www.docswell.com/s/wealthnavi/ZP96X4-company_introduction#p1" target="_blank">📄 会社紹介資料</a><a class="lbtn lbtn-out" href="https://note.com/wealthnavi_hr" target="_blank">📝 採用公式note</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">営業マネージャー（マッチングサービス（軽貨物））</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">ハコベル株式会社</div>
+  <div class="co-url"><a href="https://corp.hacobell.com/" target="_blank">https://corp.hacobell.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>104-0032 東京都中央区八丁堀2-14-1 住友不動産八重洲通ビル1・3F</td></tr><tr><th>上場区分</th><td>未上場</td></tr><tr><th>上場予定</th><td>N-1</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★IPO準備中（上場スケジュールは口頭でお伝えいたします）</li><li>★社長リレーション</li><li>★過去複数名入社実績アリ</li><li>セイノーホールディングス・ラクスルとのJVです。セイノーホールディングス田口社長とも、弊社代表・森本が懇意にさせていただいております。</li><li>物流のプラットフォーマーに成るべく、小売向け物流マッチングを中心に展開しています。強みは法人物流トップであるセイノーホールディングスとの提携で培った法人間物流。取引先は大手消費財メーカーや商社が中心で、ドライバーの登録台数5万台、シェア6％を獲得されています。</li><li>また、収益性を高めるためにSaaS事業として輸配送マッチングプラットフォーム、輸配送管理システムを開発し、既に数十社に導入が進んでいます。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ハコベルは「物流の『次』を発明する」というMissionのもと、2015年に荷主とドライバーをつなぐマッチングサービスとして事業をスタートしました。2022年8月にBtoB物流No.1のセイノーHDとラクスルのJVとして独立し、現在のハコベル株式会社が誕生。数年後のIPOを見据えた成長フェーズに突入しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ハコベルは「物流の『次』を発明する」というMissionのもと、2015年に荷主とドライバーをつなぐマッチングサービスとして事業をスタートしました。ドライバーの非稼働時間を有効活用することで、低価格かつ「誰でも・早く・簡単に」配送できる仕組みを実現し、物流業界の課題解決に挑んできた企業です。</p><p>2019年からは、一般貨物向けのマッチングサービスに加え、配車管理システムの提供を開始。さらに近年はM&Aを通じて事業基盤を大きく拡張しています。</p><ul><li>2024年9月：モノフル社の「トラック簿」事業を承継（初のM&A）</li><li>2025年12月：Azoop社の「トラッカーズマネージャー」事業を吸収分割により承継</li></ul><p>車両・運行・労務管理、収益可視化までをカバーする機能を統合し、既存事業とのシナジーを最大化しています。</p><p>ハコベルはもともとラクスル株式会社の一事業として成長してきましたが、2022年8月にBtoB物流No.1のセイノーHDとラクスルのJVとして独立し、現在のハコベル株式会社が誕生しました。その後も、2023年10月には山九株式会社／福山通運株式会社／日本ロジテム株式会社を引受先とする第三者割当増資を実施。日本を代表する物流企業が株主として名を連ね、業界全体を巻き込んだ変革に本気で取り組む体制を築いています。</p><p>背景にあるのは、ラクスルのVision「仕組みを変えれば、世界はもっと良くなる」、セイノーHDのMission「日本の物流ネットワークを効率化する」、この2つの思想を融合させ、数年後のIPOを見据えた成長フェーズに突入しています。</p><p>現在ハコベルでは、狭間社長の「ビジネスパートナー」として経営を共に推進するNo.2ポジションの採用を強化中。狭間社長のビジネスパートナー的な位置づけで是非経営を共に推進いただける方を求めたいとの切実なメッセージを頂いています！</p><p><strong>▼代表取締役社長CEO　狭間 健志氏</strong><br>1985年生まれ。東京大学大学院農学生命科学研究科修士課程修了後、ベイン・アンド・カンパニーの東京オフィスに入社。多岐にわたる業界の日系・外資系クライアントを担当。2017年8月、ラクスル株式会社へ入社。執行役員ハコベル事業本部長として5年間職務に携わったのち、分社化に伴い2022年8月、現職に就任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 営業マネージャー（マッチングサービス（軽貨物））</div>
+          <div class="job-preview">大手クライアントの物流課題を深く理解し、最適な物流ソリューションを提案・事業成長を最前線で牽引する重要なポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集ポジションについて】</strong></p><p>今回の募集ポジションは、大手クライアントの物流課題を深く理解し、どんな価値提供をすべきかを考え抜き、最適な物流ソリューションを提案していただく、事業成長を最前線で牽引する重要なポジションです。対峙しているクライアントの課題を考え抜き、「本質的な価値」に直結するソリューションを自ら提供できることは、本ポジションならではの醍醐味です。加えて、既存のソリューションを提案するだけでなく、クライアントにとって必要なニーズを吸い上げ、プロダクト側とも連携しながら必要なソリューション/機能を作り上げるような、プロジェクト型の業務遂行も求められます。</p><p><strong>【業務内容】</strong></p><p>当社は、荷主企業様と運送会社様/ドライバー様を結ぶ「物流マッチングプラットフォーム」において、荷物を配送したい法人顧客の獲得、また顧客のニーズに応じてカスタマイズ提案を行うソリューション営業のポジションです。自身が設計したオペレーション通りに品物が運ばれて様々な人の手元に届く達成感は、本ポジションならではの醍醐味です。</p><p>具体的には下記のような業務をお任せします。</p><ul><li>①顧客の課題を理解し、ソリューションを提案</li><li>②ソリューションを開発し、新しい市場の開拓</li><li>③自ら組織を率い、売上・成長を最大化</li></ul><p><strong>【組織体制】</strong></p><p>20代〜30代の社員が活躍中です。入社半年ほどで昇進・昇格したメンバーもいます。</p><p><strong>【ポジションの魅力】</strong></p><ul><li>「物流」という巨大な社会基盤を支え、変えていく、その社会的意義や使命感を肌で味わえる環境です。</li><li>自ら現場に飛び込んで、ソリューションから検討・提案することができる環境です。</li><li>事業フェーズの変化に伴い、マーケティング、プロダクト、組織作りに関わることができるダイナミックな環境です。</li><li>実績次第で早期に部長・事業責任者を担っていただくことを期待します。</li></ul><p><strong>【応募資格】</strong></p><p><strong>必須（MUST）</strong></p><ul><li><span class='tag tag-must'>MUST</span> 提案営業のご経験</li><li><span class='tag tag-must'>MUST</span> マネジメントのご経験</li></ul><p><strong>歓迎（WANT）</strong></p><ul><li><span class='tag tag-want'>WANT</span> ソリューション提案型の営業経験</li><li><span class='tag tag-want'>WANT</span> ITなど、無形商材の営業経験</li><li><span class='tag tag-want'>WANT</span> 物流、配送での経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>社会課題の解決や事業を大きくしていくために頑張れる方</li><li>自分の顧客と向き合い、その課題を一緒に解決するために、泥臭いことも含めてやりきれる方</li><li>顧客の課題からソリューション自体を考えられる方</li><li>何よりも成果に貪欲な方</li><li>チームワークを大切にする方</li><li>変化が多いスタートアップ企業でチャレンジしたい方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.hacobell.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/hacobellrecruiting/hakoberuzhu-shi-hui-she-recruit-book" target="_blank">📄 RECRUIT BOOK</a><a class="lbtn lbtn-out" href="https://newspicks.com/news/9433071" target="_blank">📰 NewsPicksタイアップ記事</a><a class="lbtn lbtn-out" href="https://note.com/hacobell/m/mee1111c9f9cf" target="_blank">📝 社員インタビュー記事</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">【事業開発本部】金融チャネル新規事業企画開発</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">フリー株式会社（freee）</div>
+  <div class="co-url"><a href="https://corp.freee.co.jp/" target="_blank">https://corp.freee.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒141-0032 東京都品川区大崎一丁目2番2号アートヴィレッジ大崎セントラルタワー21F</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ミッションは「スモールビジネスを世界の主役に」。スモールビジネス経営者が創造的な活動にフォーカスできることを目指し、全自動のクラウド会計ソフト『freee（フリー）』を開発しています。クラウド会計ソフトの圧倒的トップシェアを担い、スモールビジネスのバックオフィスのクラウド化を牽引しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ミッションは「スモールビジネスを世界の主役に」</p><p>スモールビジネス経営者が創造的な活動にフォーカスできることを目指し、全自動のクラウド会計ソフト『freee（フリー）』を開発しています。「クラウド会計ソフトfreee」は、2013年3月のリリース以来100万以上の事業所で利用されるサービスに成長。（有料課金ユーザーは30万社）クラウド会計ソフトの圧倒的トップシェアを担い、スモールビジネスのバックオフィスのクラウド化を牽引しています。</p><p>またグッドデザイン賞受賞、Infinity Ventures Summit での Launch Pad 優勝、総務省後援の「ASP・SaaS・クラウドアワード　ベンチャー大賞」受賞などの受賞歴を持ち、シリコンバレーの有力ベンチャーキャピタルやシンガポール政府系ファンドなど、グローバルな有力投資家より、2012年7月の創業以来、累計96億円以上の資金提供を受けています。</p><p>フラットな組織で、内発的動機付けから行動していくという考え方を大事にしており、こだわりを持った組織作りをしています。ビジョンミッションに共感したメンバーが集まってきていますが、より強い組織を作るために事業にもプロダクトにも理解があり、未知の領域にトライできる突破力を持った人を必要としています。イノベーションを促進していただけるような人材を求めております。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【事業開発本部】金融チャネル新規事業企画開発</div>
+          <div class="job-preview">銀行連携を軸にした新しいビジネススキームを設計し、スモールビジネスの課題解決を図る新規事業企画開発ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【Summary】</strong></p><p>本ポジションはスモールビジネスの課題解決を図るため、銀行連携を軸にしながら、今後は「銀行×○○×freee」といった新しいビジネススキームを設計し、さらなるステークホルダーの拡充並びに新しい価値の創出を期待しています。あなたの金融機関での経験や、企画の経験を活かし、日本の99.7％を占める中小企業が煩雑な業務から解放され、本業に集中できる世界を一緒につくりましょう！</p><p><strong>【業務内容】</strong></p><p>以下全てを担っていただくわけではなく、ご経験やご志向によってアサインを決定いたします。</p><ul><li>金融機関×freeeの新規ビジネススキームの事業開発</li><li>金融機関によるビジネスマッチング、ICTコンサル等を通じたfreeeプロダクト（会計freee, 人事労務freee）の拡販座組の構築</li><li>金融機関の中小企業向けICTコンサルの支援の企画・実行</li><li>金融機関との提携プロダクト（融資サービス、データ連携、会計OEM等）の事業開発・グロースのための交渉、チャネル活性化施策の立案及び遂行</li><li>対応業務のマネジメント（エリアマネジメント・メンバーマネジメント 等）</li></ul><p><strong>【応募資格】</strong></p><p><strong>必須要件</strong></p><ul><li><span class='tag tag-must'>MUST</span> 金融機関での勤務経験（地方銀行orメガバンク）</li><li><span class='tag tag-must'>MUST</span> 金融機関をクライアントとした業務経験がある方</li></ul><p><strong>歓迎要件</strong></p><ul><li><span class='tag tag-want'>WANT</span> 金融機関（銀行、信金等）での勤務経験（営業、経営企画、事業開発、IT関連部署の経験があるとより望ましい）や、金融機関をクライアントとした業務経験（コンサル、ベンダー、商社等）がある方</li><li><span class='tag tag-want'>WANT</span> 社外に対して研修を企画立案及び遂行した経験がある方</li><li><span class='tag tag-want'>WANT</span> 金融関連法務に関する知見のある方</li></ul><p><strong>【求める人物像】</strong></p><ul><li>社会の進化を担う責任感のある方</li><li>粘り強い交渉力と、協業先との信頼関係構築に卓越した能力を有している方</li><li>大企業との協業によるプロジェクトの企画・実行を自ら主導した経験があり、粘り強い交渉力と、協業先との信頼関係構築に卓越した能力を有している方、エンジニアと連携したプロダクト開発に従事した経験のある方</li><li>ITサービスに詳しい方又は詳しくなろうとする強い意欲のある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span><span class="pill">✅ 副業：条件によって可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.freee.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://jobs.freee.co.jp/engineers/" target="_blank">💼 採用HP</a><a class="lbtn lbtn-out" href="https://www.youtube.com/watch?v=8II0W-Ey1i0" target="_blank">🎬 ブランドムービー（ロングver）</a><a class="lbtn lbtn-out" href="https://www.youtube.com/watch?v=m-WuLpWV3wE" target="_blank">🎬 ブランドムービー（ショートver）</a><a class="lbtn lbtn-out" href="https://youtu.be/1YzvNSnopmw" target="_blank">🎥 セールス職体験入社動画</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">コンサルタント（物流改革）【SCS SU】</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">アビームコンサルティング株式会社</div>
+  <div class="co-url"><a href="https://www.abeam.com/jp/ja/" target="_blank">https://www.abeam.com/jp/ja/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区八重洲二丁目2番1号 東京ミッドタウン八重洲 八重洲セントラルタワー</td></tr><tr><th>設立</th><td>1981年</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1981年設立の日本発グローバルコンサルティングファームです。戦略立案から業務改革、IT実装までを一気通貫で支援する総合型モデルを採用しており、特にSAPを中心とした基幹システム改革において国内有数の実績を持ちます。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1981年設立の日本発グローバルコンサルティングファームです。戦略立案から業務改革、IT実装までを一気通貫で支援する総合型モデルを採用しており、特にSAPを中心とした基幹システム改革において国内有数の実績を持ちます。DX需要の高まりを背景に、基幹刷新やグローバル統合案件が拡大しており、安定的な成長を継続しています。</p><p>同社の特徴は<strong>「構想だけで終わらせない実行力」</strong>です。外資戦略ファームが戦略特化型であるのに対し、アビームは現場定着・業務実装まで責任を持つスタイルを徹底しています。日本企業の意思決定プロセスや組織文化への理解が深く、長期的なパートナーとして継続的に選ばれている点は大きな競争優位性です。アジア拠点も活用し、日系企業の海外展開支援まで包括的に対応できる体制を構築しています。</p><p>現在、全部門においてマネージャー以上の管理職層が不足していることが課題とのこと。今後は戦略コンサルティング事業の強化・拡大を掲げ、2年前に再開したM&Aや事業戦略などの上流コンサルティング領域を牽引できる人材を求めています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 コンサルタント（物流改革）【SCS SU】</div>
+          <div class="job-preview">サプライチェーン・物流改革の戦略立案からDX推進まで一気通貫で支援するプロフェッショナルポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■組織について</strong></p><p>経済・社会情勢の変化に伴うサプライチェーンのデカップリングやグリーン・サステナブルの規制などグローバルにおけるビジネスの環境変化が加速していく中で、サプライチェーンのゼロベースでの構造改革の必要性が高まってきております。</p><p>Sustainable SCM Strategy Unitでは、『GlobalでのSCM構築』や『物流・調達コストの構造改革』といった伝統的なテーマに留まらず、各社がこれから取組むべき『グリーントランスフォーメーション（GX）』、『サーキュラーエコノミー（循環経済）』といった課題やテーマに対して、グローバル知見と最新の事例などを基に企業の構造改革と社会価値の創造の取り組みを行うプロフェッショナルチームです。</p><p><strong>■業務内容</strong></p><ul><li><strong>物流戦略立案</strong><ul><li>物流のあるべき姿の立案・実現支援</li><li>コスト削減/GHG削減オポチュニティ導出・実行支援</li><li>生産/物流ネットワークの設計支援</li></ul></li><li><strong>物流センター新設企画・自動化推進</strong><ul><li>物流課題を解決する物流センター業務/システム/設備の構想策定支援</li><li>物流センター設立、運営、安定化までのPMO支援</li></ul></li><li><strong>物流DX構想の策定・実現支援</strong><ul><li>最新テクノロジー・AI・パッケージソフトウェア等を活用したDXの構想策定と実行支援</li></ul></li></ul><p><strong>■プロジェクト例</strong></p><p><strong>①ロジスティクス戦略策定</strong></p><ul><li>製造/卸売業：物流戦略策定/施策立案支援</li><li>小売業：物流改革構想策定支援</li><li>製造業：グローバルサプライチェーン戦略策定支援</li><li>製造業：生産/物流ネットワーク最適化支援</li><li>製造/物流業：共同物流構想/スキーム設計支援</li></ul><p><strong>②物流センター設立/DX推進</strong></p><ul><li>小売/流通業：新物流センター構想策定/詳細設計支援</li><li>物流業：物流センター自動化推進支援</li><li>製造業：倉庫運営のフルデジタル化構想策定支援</li><li>小売/物流業：倉庫運営管理基盤構築支援</li><li>製造/小売業：WMS導入システム化構想策定支援</li></ul><p><strong>■応募資格</strong></p><p>コンサルティング経験、もしくは事業会社での業務経験をお持ちで下記のいずれかに該当する方</p><ul><li><span class='tag tag-must'>MUST</span> コンサルティングファーム出身で物流改革プロジェクトの経験がある方</li><li><span class='tag tag-must'>MUST</span> IT企業出身で物流システム（WMS、TMS等）の構想策定プロジェクトの経験がある方</li><li><span class='tag tag-must'>MUST</span> 事業会社出身でSCM/物流企画・管理の経験がある方</li><li><span class='tag tag-want'>WANT</span> 製造業のSCM/物流改革の経験がある方</li><li><span class='tag tag-want'>WANT</span> 物流の自動化や最適化に関する知見をお持ちの方</li></ul><p><strong>■求める人物像</strong></p><p>物流リスクの進展に危機感を持ち、日本企業のSCM/物流変革に対する意思と気概を持った方</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.abeam.com/jp/ja/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが竹野翔一 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
